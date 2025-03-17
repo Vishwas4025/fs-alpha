@@ -1,12 +1,17 @@
-//day9program2
-// Balbir Singh is working with Binary Trees.
-// The elements of the tree are given in level-order format.
+//day9program3
+// A software development company is designing a smart home automation
+// system that uses sensor networks to monitor and control different devices
+// in a house. The sensors are organized in a hierarchical structure, where each
+// sensor node has a unique ID and can have up to two child nodes (left and
+// right).
 
-// Balbir is observing the tree from the right side, meaning he
-// can only see the rightmost nodes (one node per level).
+// The company wants to analyze the left-most sensors in the system to determine
+// which ones are critical for detecting environmental changes. The hierarchy of
+// the sensors is provided as a level-order input, where missing sensors are
+// represented as -1.
 
-// You are given the root of a binary tree. Your task is to determine
-// the nodes visible from the right side and return them in top-to-bottom order.
+// Your task is to build the sensor network as a binary tree and then determine
+// the left-most sensor IDs at each level.
 
 // Input Format:
 // -------------
@@ -14,7 +19,7 @@
 
 // Output Format:
 // --------------
-// A list of integers representing the node values visible from the right side
+// A list of integers representing the left-most sensor IDs at each level
 
 // Sample Input-1:
 // ---------------
@@ -22,15 +27,16 @@
 
 // Sample Output-1:
 // ----------------
-// [1, 3, 5]
+// [1, 2, 4]
 
 // Sample Input-2:
 // ---------------
-// 3 1 4 5 2
+// 3 2 4 1 5
 
 // Sample Output-2:
 // ----------------
-// [3, 4, 2]
+// [3, 2, 1]
+
 
 import java.util.*;
 
@@ -45,7 +51,7 @@ class TreeNode{
     }
 }
 
-public class day9program2 {
+public class day9program3 {
     public static TreeNode buildTree(List<Integer> vals) {
         if (vals == null || vals.isEmpty() || vals.get(0) == -1)
             return null;
@@ -71,24 +77,24 @@ public class day9program2 {
         return root;
     }
 
-    public static List<Integer> right_view(TreeNode root) {
+    public static List<Integer> left_view(TreeNode root) {
         List<Integer> res = new ArrayList<>();
+        Queue<TreeNode> q = new LinkedList<>();
         if (root == null)
             return null;
-        Queue<TreeNode> q = new LinkedList<>();
         q.add(root);
         while (!q.isEmpty()) {
             int size = q.size();
-            TreeNode flag = null;
             for (int i = 0; i < size; i++) {
                 TreeNode curr = q.poll();
-                flag = curr;
+                if (i == 0)
+                    res.add(curr.data);
                 if (curr.left != null)
                     q.add(curr.left);
                 if (curr.right != null)
                     q.add(curr.right);
+
             }
-            res.add(flag.data);
         }
         return res;
     }
@@ -101,6 +107,6 @@ public class day9program2 {
             vals.add(Integer.parseInt(s));
         }
         TreeNode root = buildTree(vals);
-        System.out.println(right_view(root));
+        System.out.println(left_view(root));
     }
 }

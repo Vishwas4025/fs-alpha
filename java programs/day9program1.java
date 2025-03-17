@@ -1,4 +1,3 @@
-//day9program1
 // A security team is setting up surveillance cameras in a multi-floor building.
 // Each floor has a certain number of cameras, and every camera is assigned
 // a resolution value (in megapixels). The placement follows a hierarchical
@@ -41,35 +40,49 @@
 
 import java.util.*;
 
-class node {
-    int val;
-    node left, right;
-
-    node(int val) {
-        this.val = val;
-        left = right = null;
+class TreeNode{
+    int data;
+    TreeNode left;
+    TreeNode right;
+    TreeNode(int data){
+        this.data = data;
+        left = null;
+        right = null;
     }
 }
 
 public class day9program1 {
-    public static node builtTree(List<Integer> vals) {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String[] inp = sc.nextLine().split(" ");
+        List<Integer> l1 = new ArrayList<>();
+        for (String s : inp) {
+            l1.add(Integer.parseInt(s));
+        }
+        TreeNode root = builtTree(l1);
+        List<Integer> ans = MaxLev(root);
+        System.out.println(ans);
+        sc.close();
+    }
+
+    public static TreeNode builtTree(List<Integer> vals) {
         if (vals == null || vals.size() == 0 || vals.get(0) == -1)
             return null;
 
-        node root = new node(vals.get(0));
-        Queue<node> q = new LinkedList<>();
+        TreeNode root = new TreeNode(vals.get(0));
+        Queue<TreeNode> q = new LinkedList<>();
         q.add(root);
         int i = 1;
 
         while (i < vals.size()) {
-            node curr = q.poll();
+            TreeNode curr = q.poll();
             if (i < vals.size() && vals.get(i) != -1) {
-                curr.left = new node(vals.get(i));
+                curr.left = new TreeNode(vals.get(i));
                 q.add(curr.left);
             }
             i++;
             if (i < vals.size() && vals.get(i) != -1) {
-                curr.right = new node(vals.get(i));
+                curr.right = new TreeNode(vals.get(i));
                 q.add(curr.right);
             }
             i++;
@@ -77,20 +90,20 @@ public class day9program1 {
         return root;
     }
 
-    public static List<Integer> MaxLev(node root) {
+    public static List<Integer> MaxLev(TreeNode root) {
         List<Integer> res = new ArrayList<>();
         if (root == null)
             return res;
 
-        Queue<node> q = new LinkedList<>();
+        Queue<TreeNode> q = new LinkedList<>();
         q.add(root);
 
         while (!q.isEmpty()) {
             int size = q.size();
             int max = Integer.MIN_VALUE;
             for (int i = 0; i < size; i++) {
-                node curr = q.poll();
-                max = Math.max(max, curr.val);
+                TreeNode curr = q.poll();
+                max = Math.max(max, curr.data);
                 if (curr.left != null)
                     q.add(curr.left);
                 if (curr.right != null)
@@ -101,15 +114,5 @@ public class day9program1 {
         return res;
     }
 
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        String[] inp = sc.nextLine().split(" ");
-        List<Integer> l1 = new ArrayList<>();
-        for (String s : inp) {
-            l1.add(Integer.parseInt(s));
-        }
-        node root = builtTree(l1);
-        List<Integer> ans = MaxLev(root);
-        System.out.println(ans);
-    }
+    
 }
