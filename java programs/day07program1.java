@@ -49,6 +49,6 @@
 // */
 
 
-public class day7program1 {
+public class day07program1 {
     
 }

@@ -31,6 +31,6 @@
 // false
 
 
-public class day5program1 {
+public class day05program1 {
     
 }

@@ -71,3 +71,7 @@
 // Sample Output-3:
 // ----------------
 // [1, 2, 7, 6, 5, 3]
+
+public class day09program4 {
+ 
+}

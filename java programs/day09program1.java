@@ -51,7 +51,7 @@ class TreeNode{
     }
 }
 
-public class day9program1 {
+public class day09program1 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String[] inp = sc.nextLine().split(" ");

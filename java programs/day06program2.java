@@ -60,6 +60,6 @@
 
 
 
-public class day6program2 {
+public class day06program2 {
     
 }

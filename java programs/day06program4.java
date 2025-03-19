@@ -51,6 +51,6 @@
 
 
 
-public class day6program4 {
+public class day06program4 {
     
 }

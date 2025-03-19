@@ -56,7 +56,7 @@
 
 // evaluation 100
 import java.util.*;
-public class day3program1 {
+public class day03program1 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();

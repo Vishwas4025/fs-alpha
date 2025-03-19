@@ -70,7 +70,7 @@ class Student {
         return name+" "+score;
     }
 }
-public class day2program1{
+public class day02program1{
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
         PriorityQueue<Student> q = new PriorityQueue<>((Student1, Student2 ) -> {

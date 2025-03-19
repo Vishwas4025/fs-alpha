@@ -12,7 +12,7 @@ class Node{
     }
 }
 
-public class day8program1{
+public class day08program1{
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
         String s = sc.nextLine();

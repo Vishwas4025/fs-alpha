@@ -33,6 +33,6 @@
 
 
 
-public class day4program2 {
+public class day04program2 {
     
 }

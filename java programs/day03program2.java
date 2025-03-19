@@ -55,7 +55,7 @@
 
 
 import java.util.*;
-public class day3program2 {
+public class day03program2 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String code = sc.next();

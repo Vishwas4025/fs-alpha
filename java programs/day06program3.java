@@ -60,17 +60,6 @@
 // Level 3 (Odd) → 4 5 6 7 (Left to Right)
 
 
-
-
-
-
-
-
-
-
-
-
-
-public class day6program3 {
+public class day06program3 {
     
 }
