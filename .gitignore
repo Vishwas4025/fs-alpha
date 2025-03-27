@@ -1,1 +1,4 @@
 /fsd/backend/node_modules
+/websocket/node_modules
+/ws-GroupChat/node_modules
+/ws-MongoDb/node_modules
