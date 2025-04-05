@@ -24,5 +24,5 @@ server.on("connection", (socket) => {
     });
 });
 
-console.log("WebSocket server running on ws://192.168.5.57:8080");
+console.log("WebSocket server running on ws://localhost:8080");
 

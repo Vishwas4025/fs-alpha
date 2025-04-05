@@ -1,1 +1,1 @@
-Not sure about some of the solutions
+konni solutions tappu untay chuskondi

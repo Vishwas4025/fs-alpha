@@ -1,5 +1,5 @@
 const ws = require('ws');
-const socket = new ws('ws://192.168.5.57:8080');
+const socket = new ws('ws://localhost:8080');
 socket.on('open', () => {
     console.log('Connected to server');
     socket.send('INSERT Alice 50000 Developer IT 5');

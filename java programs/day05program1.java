@@ -65,7 +65,7 @@ public class day05program1{
             nums[i] = sc.nextInt();
         }
         
-     
+    
         int diff =0;
         for(int k=l; k<=r; k++){
             PriorityQueue<Integer> pq1 = new PriorityQueue<>();

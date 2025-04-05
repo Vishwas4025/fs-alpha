@@ -1,132 +1,71 @@
-// You are provided with an array of integers called 'score,' with 'n' elements, 
-// where 'score[i]' represents the performance score of the ith participant 
-// in a competitive event. It is guaranteed that all the scores are distinct.
+// /*
+// In an institution there is a special keyboard.
+// It contains only one row of 26-keys, keys[]
 
-// The participants' final positions are determined solely by their performance scores, 
-// with the top performer ( with highest score), securing the 1st position, 
-// the second-best performer obtaining the 2nd position, and so forth. 
-// Each participant's rank is directly related to their placement:
-// 	- The participant in the 1st position is awarded the 'Champion'
-// 	- The participant in the 2nd position receives the 'RunnerUp-1'
-// 	- The participant in the 3rd position is granted the 'RunnerUp-2'
-// 	- For participants ranked from 4th to 'n,' their rank corresponds to 
-// 	their position (i.e., the participant in the xth position is assigned the rank 'x').
+// The order of keys will be given, You need to findout the time taken to type a word.
 
-// Your task is to generate an array named 'answer' of size 'n' 
-// Each element 'answer[i]' in this array should represent the rank achieved 
-// by the ith participant.
+// The rules to find the time is as follows:
+// Initially you will be at first key .i.e, keys[0].
+// To type a character, you have to move to a key having desired character, key[j].
+// Time taken to type the character from key at ith index to key at jth index is |i - j|.
+
+// You will be given two strings, Keys and Word W.
+// Your task is to find how much time it takes to type the Word W 
+// using the given order of keys
+
+// NOTE: You have to use only one finger to type the word.
 
 // Input Format:
 // -------------
-// Line-1: An integer N, number of participants.
-// Line-2: N space seprated integers, scores[].
+// Line-1: A String Keys order.
+// Line-2: A String word W to type.
 
 // Output Format:
 // --------------
-// Print the list of ranks of the participants.
+// An integer T, time to type the word.
 
 
 // Sample Input-1:
 // ---------------
-// 5
-// 10 3 9 8 4
+// poiuytrewqasdfghjklmnbvcxz
+// kmit
 
 // Sample Output-1:
 // ----------------
-// [Champion, 5, RunnerUp-1, RunnerUp-2, 4]
+// 39
 
-
-// Sample Input-2:
-// ---------------
-// 8
-// 10 3 9 4 2 7 6 1
 
 // Sample Output-2:
 // ----------------
-// [Champion, 6, RunnerUp-1, 5, 7, RunnerUp-2, 4, 8]
+// abcdefghijklmnopqrstuvwxyz
+// code
 
+// Sample Output-2:
+// ----------------
+// 26
+
+// */
+// // use hashmap for optimization.
 
 import java.util.*;
 
-public class day18program1 {
-    public static void main(String[] args) {
+public class day18program1{
+    public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        List<Integer> al = new ArrayList<>();
-        Map<Integer, Queue<Integer>> indexMap = new HashMap<>();
-
-        for (int i = 0; i < n; i++) {
-            int num = sc.nextInt();
-            al.add(num);
-            indexMap.putIfAbsent(num, new LinkedList<>());
-            indexMap.get(num).add(i);
-        }
-
-        List<String> result = new ArrayList<>(Collections.nCopies(n, ""));
-        PriorityQueue<Integer> pq = new PriorityQueue<>(Comparator.reverseOrder());
-        pq.addAll(al);
-
-        int i = 1;
-        while (!pq.isEmpty()) {
-            int value = pq.poll();
-            int ind = indexMap.get(value).poll(); // Get correct index
-            if (i == 1) {
-                result.set(ind, "Champion");
-            } 
-            else if (i == 2) {
-                result.set(ind, "RunnerUp-1");
-            } 
-            else if (i == 3) {
-                result.set(ind, "RunnerUp-2");
-            } 
-            else {
-                result.set(ind, Integer.toString(i));
+        String s = sc.next();
+        String key = sc.next();
+        int l = key.length();
+        int i=0,j=0,k=0;
+        int total=0;
+        while(k<l && i<s.length()){
+            if(s.charAt(i)==key.charAt(k)){
+                total+=Math.abs(i-j);
+                k++;
+                j=i;
+                i=-1;
             }
             i++;
         }
-        System.out.println(result);
+        System.out.println(total);
     }
 }
-
-
-// import java.util.*;
-
-// public class program {
-//     public static void main(String[] args) {
-//         Scanner sc = new Scanner(System.in);
-//         int n = sc.nextInt();
-//         List<Integer> al = new ArrayList<>();
-//         for(int i=0; i<n; i++){
-//             al.add(sc.nextInt());
-//         }
-        
-//         List<String> result = new ArrayList<>();
-//         PriorityQueue<Integer> pq = new PriorityQueue<>(Comparator.reverseOrder());
-//         for(int i=0; i<n; i++){
-//             pq.add(al.get(i));
-//         }
-        
-//         int i=1;
-//         while(i<=n){
-//             int ind = al.indexOf(pq.poll());
-//             if(i==1){
-//                 result.add(ind, "Champion");
-//             }
-//             else if(i==2){
-//                 result.add(ind, "RunnerUp-1");
-//             }
-//             else if(i==3){
-//                 result.add(ind, "RunnerUp-2");
-//             }
-//             else{
-//                 result.add(ind, Integer.toString(i));
-//             }
-//             i++;
-//         }
-        
-//         System.out.println(result);
-        
-        
-//     }
-// }
-
