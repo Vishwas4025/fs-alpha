@@ -44,23 +44,17 @@
 // ----------------
 // 2 2 3 4
 
-
-
-/*
-TreeNode for Reference.
+import java.util.*;
 
 class TreeNode {
     Integer val;
     TreeNode left, right;
-    
     TreeNode(Integer val) {
         this.val = val;
         this.left = this.right = null;
     }
 }
-*/
 
-import java.util.*;
 class day15program2{
     public TreeNode combinedReport(TreeNode root1, TreeNode root2){
         // Implement the logic
