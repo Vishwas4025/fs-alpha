@@ -78,7 +78,7 @@ public class day28program1{
 
 
 // import java.util.*;
-// public class program{
+// public class day28program1{
 //     public static void main(String[] args){
 //         Scanner sc = new Scanner(System.in);
 //         String s = sc.next();
@@ -87,6 +87,7 @@ public class day28program1{
         
 //         StringBuilder sb = new StringBuilder();
 //         String res = "";
+//         boolean flag=false;
 //         for(int i=0; i<s.length(); i++){
 //             char ch = s.charAt(i);
             
@@ -95,14 +96,22 @@ public class day28program1{
 //             if(i!=0 && (i+1)%(2*c) == 0){
 //                 res+=sb.toString();
 //                 sb.setLength(0);
+//                 flag = false;
 //             }
 //             else if(i!=0 && (i+1)%c == 0){
 //                 res+=sb.reverse().toString();
 //                 sb.setLength(0);
+//                 flag = true;
 //             }
 //         }
 //         if(sb.length()!=0){
-//             res+=sb.reverse().toString();
+//             if(flag==false){
+//                 res+=sb.reverse().toString();
+//             }
+//             else if(flag==true){
+//                 res+=sb.toString();
+//             }
+            
 //         }
         
 //         System.out.print(res);
