@@ -1,0 +1,78 @@
+/*
+Write a MongoDB query to find employees whose pin code is even and greater than 400000
+
+
+Collection: 'employees'
+
+Reference Document:
+----------------------
+{
+  "employeeId": "E001",
+  "name": "Aarav Sharma",
+  "age": 28,
+  "gender": "Male",
+  "email": "aarav.sharma@example.com",
+  "department": "Engineering",
+  "salary": 720000,
+  "isPermanent": true,
+  "joiningDate": {
+    "$date": "2019-06-15T00:00:00.000Z"
+  },
+  "skills": [
+    "JavaScript",
+    "Node.js",
+    "MongoDB"
+  ],
+  "address": {
+    "street": "12 MG Road",
+    "city": "Bangalore",
+    "state": "Karnataka",
+    "pinCode": 560001
+  }
+}
+
+
+Sample Output:
+--------------
+[
+  {
+    name: 'Siddharth Joshi',
+    address: {
+      street: '10 FC Road',
+      city: 'Pune',
+      state: 'Maharashtra',
+      pinCode: 411004
+    }
+  },
+  {
+    name: 'Kavya Raj',
+    address: {
+      street: '3 BTM Layout',
+      city: 'Bangalore',
+      state: 'Karnataka',
+      pinCode: 560076
+    }
+  }
+]
+
+
+
+Query Reference:
+-------------------
+printjson() : JS library function to display the JSON Object data.
+In db.<collection>.find():
+	db -> Refers to the database.
+	<collection> -> Your collection name
+	find() -> Method to write the selection and projection part of the query.
+
+*/
+	
+printjson(
+  db.employees.find({"address.pinCode":{$gt: 400000, $mod: [2, 0]}},
+{
+      _id:0,
+      "name": 1,
+      "address": 1
+}
+  )
+)

@@ -1,0 +1,55 @@
+/*
+Write a MongoDB query to retrieve all employees whose salary is more than INR 700000.
+
+
+Collection: 'employees'
+
+Reference Document:
+----------------------
+{
+  "employeeId": "E001",
+  "name": "Aarav Sharma",
+  "age": 28,
+  "gender": "Male",
+  "email": "aarav.sharma@example.com",
+  "department": "Engineering",
+  "salary": 720000,
+  "isPermanent": true,
+  "joiningDate": {
+    "$date": "2019-06-15T00:00:00.000Z"
+  },
+  "skills": [
+    "JavaScript",
+    "Node.js",
+    "MongoDB"
+  ],
+  "address": {
+    "street": "12 MG Road",
+    "city": "Bangalore",
+    "state": "Karnataka",
+    "pinCode": 560001
+  }
+}
+
+
+Sample Output:
+--------------
+[
+  { name: 'Aarav Sharma', salary: 720000 },
+  { name: 'Neha Reddy', salary: 750000 }
+]
+
+
+Query Reference:
+-------------------
+printjson() : JS library function to display the JSON Object data.
+In db.<collection>.find():
+	db -> Refers to the database.
+	<collection> -> Your collection name
+	find() -> Method to write the selection and projection part of the query.
+
+*/
+	
+printjson(
+	db.employees.find({salary : {$gt:700000}},{name:1,salary:1,_id:0})
+)

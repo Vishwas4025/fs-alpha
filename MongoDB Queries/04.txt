@@ -1,0 +1,64 @@
+/*
+Write a MongoDB query to find employees who joined after January 1st, 2021.
+
+
+Collection: 'employees'
+
+Reference Document:
+----------------------
+{
+  "employeeId": "E001",
+  "name": "Aarav Sharma",
+  "age": 28,
+  "gender": "Male",
+  "email": "aarav.sharma@example.com",
+  "department": "Engineering",
+  "salary": 720000,
+  "isPermanent": true,
+  "joiningDate": {
+    "$date": "2019-06-15T00:00:00.000Z"
+  },
+  "skills": [
+    "JavaScript",
+    "Node.js",
+    "MongoDB"
+  ],
+  "address": {
+    "street": "12 MG Road",
+    "city": "Bangalore",
+    "state": "Karnataka",
+    "pinCode": 560001
+  }
+}
+
+
+Sample Output:
+--------------
+[
+  {
+    name: 'Rohan Mehta',
+    age: 25,
+    joiningDate: ISODate('2021-11-01T00:00:00.000Z')
+  },
+  {
+    name: 'Ananya Iyer',
+    age: 30,
+    joiningDate: ISODate('2022-01-04T00:00:00.000Z')
+  }
+]
+
+
+
+Query Reference:
+-------------------
+printjson() : JS library function to display the JSON Object data.
+In db.<collection>.find():
+	db -> Refers to the database.
+	<collection> -> Your collection name
+	find() -> Method to write the selection and projection part of the query.
+
+*/
+	
+printjson(
+	db.employees.find({joiningDate : {$gt:ISODate("2021-01-01T00:00:00.000Z")}},{name:1,age:1,joiningDate:1,_id:0})
+)

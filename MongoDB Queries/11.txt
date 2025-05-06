@@ -1,0 +1,62 @@
+/*
+Write a MongoDB query to find employees whose names start with the letter 'A'.
+
+
+Collection: 'employees'
+
+Reference Document:
+----------------------
+{
+  "employeeId": "E001",
+  "name": "Aarav Sharma",
+  "age": 28,
+  "gender": "Male",
+  "email": "aarav.sharma@example.com",
+  "department": "Engineering",
+  "salary": 720000,
+  "isPermanent": true,
+  "joiningDate": {
+    "$date": "2019-06-15T00:00:00.000Z"
+  },
+  "skills": [
+    "JavaScript",
+    "Node.js",
+    "MongoDB"
+  ],
+  "address": {
+    "street": "12 MG Road",
+    "city": "Bangalore",
+    "state": "Karnataka",
+    "pinCode": 560001
+  }
+}
+
+
+Sample Output:
+--------------
+[                                                                               
+  {                                                                             
+    name: 'Aarav Sharma'                                                        
+  },                                                                            
+  {                                                                             
+    name: 'Ananya Iyer'                                                         
+  }
+]   
+
+
+Query Reference:
+-------------------
+printjson() : JS library function to display the JSON Object data.
+In db.<collection>.find():
+	db -> Refers to the database.
+	<collection> -> Your collection name
+	find() -> Method to write the selection and projection part of the query.
+
+*/
+	
+printjson(
+	db.employees.find({name : {$regex : "^a" , $options : 'i'}},{
+	    name : 1,
+	    _id : 0
+	})
+)
